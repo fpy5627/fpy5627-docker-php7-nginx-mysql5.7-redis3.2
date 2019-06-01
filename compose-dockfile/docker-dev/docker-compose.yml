@@ -7,7 +7,7 @@ services:
     ports:
       - "43306:3306"
     volumes:
-      - C:/project/docker-container/mysql:/var/lib/mysql
+      - E:/project/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 123456
   myredis:
@@ -17,7 +17,7 @@ services:
     ports:
       - "46379:6379"
     volumes:
-      - C:/project/docker-container/redis:/data
+      - E:/project/redis:/data
   myphp:
     build: ./php
     container_name: "php7.2"
@@ -25,8 +25,8 @@ services:
     ports:
       - "49000:9000"
     volumes:
-      - C:/project/docker-container/www:/var/www/html
-      - C:/project/docker-container/php:/usr/local/etc/php
+      - E:/project/www:/var/www/html
+      - E:/project/php:/usr/local/etc/php
     links:
       - "mydb"
       - "myredis"
@@ -46,6 +46,6 @@ services:
       - "myphp"
       - "mydb"
     volumes:
-      - C:/project/docker-container/www:/usr/share/nginx/html
-      - C:/project/docker-container/nginx:/etc/nginx
-      - C:/project/docker-container/logs/nginx.logs:/var/log/nginx
+      - E:/project/www:/usr/share/nginx/html
+      - E:/project/nginx:/etc/nginx
+      - E:/project/logs/nginx.logs:/var/log/nginx
